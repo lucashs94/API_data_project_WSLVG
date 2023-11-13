@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "api-data-project"
+version = "0.1.0"
+description = ""
+authors = ["lucashs94 <h7.lucas@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0.post1"
+taskipy = "^1.12.0"
+pytest = "^7.4.3"
+httpx = "^0.25.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.taskipy.tasks]
+run = 'uvicorn main:app --reload'
+test = 'pytest -v'
+kill = 'kill -9 $(lsof -t -i:8000)'
