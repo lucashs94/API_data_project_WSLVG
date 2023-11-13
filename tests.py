@@ -13,3 +13,13 @@ def test_hello_status_code_200():
 def test_hello_return_json():
     response = client.get('/')
     assert response.json() == { "Ola": "Mundo" }
+
+
+def test_listar_produtos_status_code_200():
+    response = client.get('/produtos')
+    assert response.status_code == 200
+
+
+def test_listar_produtos_tamanho_lista():
+    response = client.get('/produtos')
+    assert len(response.json()) == 3
