@@ -23,3 +23,14 @@ def test_listar_produtos_status_code_200():
 def test_listar_produtos_tamanho_lista():
     response = client.get('/produtos')
     assert len(response.json()) == 3
+
+
+def test_buscar_produto():
+    response = client.get('/produtos/1')
+    assert response.json() == {
+        "id": 1,
+        "nome": "Smartphone",
+        "descricao": "Um otimo telefone",
+        "preco": 1500,
+        "disponivel": True,
+    }    
